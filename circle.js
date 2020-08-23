@@ -2,7 +2,7 @@ class Circle extends Colider {
     constructor(x, y, r) {
         super(x, y);
         this.r = r;
-        this.center = pos;
+        this.center = this.pos;
         this.type = "Circle";
     }
 
@@ -20,7 +20,19 @@ class Circle extends Colider {
     }
 
     _colideWithBox(other) {
-        let point = 
+        let d = other.center.copy();
+        d.sub(this.pos);
+        d.setMag(this.r);
+        let p = this.pos.copy();
+        p.add(d);
+        fill(255);
+        circle(p.x, p.y, 4);
+        return (
+            p.x > other.pos.x &&
+            p.x < other.pos.x + other.width &&
+            p.y > other.pos.y &&
+            p.y < other.pos.y + other.height
+        );
     }
 
     _colideWithCircle(other) {
@@ -34,6 +46,6 @@ class Circle extends Colider {
     }
 
     _moved() {
-        center = this.pos;
+        this.center = this.pos;
     }
 }

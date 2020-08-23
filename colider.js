@@ -12,8 +12,8 @@ class Colider {
         if (mouseIsPressed && d < 10) {
             this.pos.x = mouseX;
             this.pos.y = mouseY;
+            this._moved();
         }
-        this._moved();
     }
 
     _moved() {}

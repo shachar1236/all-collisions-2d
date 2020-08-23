@@ -3,7 +3,7 @@ class Box extends Colider {
         super(x, y);
         this.width = width;
         this.height = height;
-        this.center = createVector(x + width / 2, y + height / 2);
+        this.center = createVector(this.pos.x + width / 2, this.pos.y + height / 2);
         this.type = "Box";
     }
 
@@ -29,10 +29,12 @@ class Box extends Colider {
     show() {
         fill(this.color);
         rect(this.pos.x, this.pos.y, this.width, this.height);
+        fill(255);
+        circle(this.center.x, this.center.y, 4);
     }
 
     _moved() {
-        this.center.x = x + width / 2;
-        this.center.y = y + height / 2;
+        this.center.x = this.pos.x + this.width / 2;
+        this.center.y = this.pos.y + this.height / 2;
     }
 }
