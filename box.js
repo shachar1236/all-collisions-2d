@@ -1,7 +1,15 @@
 class Box extends Colider {
+    constructor(x, y, width, height) {
+        super(x, y);
+        this.width = width;
+        this.height = height;
+        this.center = createVector(x + width / 2, y + height / 2);
+        this.type = "Box";
+    }
+
     colide(colider) {
-        switch (colider.colider) {
-            case this.colider: // check if this is a box colider
+        switch (colider.type) {
+            case this.type: // check if this is a box colider
                 return this._colideWithBox(colider);
                 break;
             default:
@@ -23,7 +31,8 @@ class Box extends Colider {
         rect(this.pos.x, this.pos.y, this.width, this.height);
     }
 
-    _created() {
-        this.colider = "Box";
+    _moved() {
+        this.center.x = x + width / 2;
+        this.center.y = y + height / 2;
     }
 }

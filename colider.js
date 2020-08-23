@@ -1,12 +1,10 @@
 class Colider {
     static types = ["Box", "Circle", "Polygone"];
 
-    constructor(x, y, width, height) {
+    constructor(x, y) {
         this.pos = createVector(x, y);
-        this.width = width;
-        this.height = height;
         this.color = color(255, 0, 0);
-        this._created();
+        this.center;
     }
 
     move() {
@@ -15,11 +13,12 @@ class Colider {
             this.pos.x = mouseX;
             this.pos.y = mouseY;
         }
+        this._moved();
     }
+
+    _moved() {}
 
     colide() {}
 
     show() {}
-
-    _created() {}
 }
